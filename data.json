@@ -1,0 +1,23 @@
+{
+    "contracts": [
+        {
+            "id": 1,
+            "name": "Employment Contract",
+            "type": "Foundation",
+            "link": "/link/to/id/1"
+        },
+        {
+            "id": 2,
+            "name": "Rent agreement",
+            "type": "Operation",
+            "link": "/link/to/id/2"
+        },
+        {
+            "id": 3,
+            "name": "Rent agreement second",
+            "type": "Operation",
+            "link": "/link/to/id/3"
+        }
+        
+    ]
+}
