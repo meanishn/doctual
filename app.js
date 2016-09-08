@@ -1,5 +1,5 @@
 var lunr = require("lunr");
-var data = require("./data");
+var data = require("./demo");
 var jsonfile = require("jsonfile");
 
 console.log(data);

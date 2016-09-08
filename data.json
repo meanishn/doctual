@@ -2,22 +2,23 @@
     "contracts": [
         {
             "id": 1,
-            "name": "Employment Contract",
+            "name": "COmpany Registration (Docs, ytj.fi)",
             "type": "Foundation",
             "link": "/link/to/id/1"
         },
         {
             "id": 2,
-            "name": "Rent agreement",
+            "name": "Shareholders Agreements  - osakassopimuksen ",
             "type": "Operation",
             "link": "/link/to/id/2"
         },
         {
             "id": 3,
-            "name": "Rent agreement second",
+            "name": "Tax Registration --  Vero",
             "type": "Operation",
             "link": "/link/to/id/3"
-        }
+        },
+        
         
     ]
 }
