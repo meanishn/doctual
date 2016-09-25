@@ -1,31 +1,21 @@
-// var events = require("eventEmitter");
 var jsonFile = require("jsonfile");
-var lineReader = require("readline").createInterface({
-    input: require('fs').createReadStream('contracts.txt')
-});
-var current_type = "";
+var doctualSheet = require("./googleSheet/doctualSheet");
+
 var obj = {
         'contracts': []
     };
-var count = 0;
 
-lineReader.on("line", function (line) {
-    if (!line) {
-        return;
-    }
-    if (/^\d+/.test(line[0])) {
-        current_type = line.replace(/^\d+./, "");
-        return;
-    }
-    count++;
-    obj.contracts.push({
-        id: count,
-        name: line,
-        type: current_type
-    });
-});
-
-lineReader.on("close", function () {
-    console.log(obj);
-    jsonFile.writeFile("demo.json", obj);
+doctualSheet.getData(function (row) {
+   for (var i=0; i<row.length; i++) {
+       var curr_row = row[i];
+       obj.contracts.push({
+           id: curr_row[0],
+           name: curr_row[1],
+           category: curr_row[2],
+           sub_category: curr_row[3],
+           link: curr_row[4]
+       });
+   }
+   jsonFile.writeFile("demo.json", obj);
+   console.log("writing to file succeeded.........");
 });
