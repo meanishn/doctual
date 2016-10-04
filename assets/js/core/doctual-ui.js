@@ -12,8 +12,8 @@
                 '{{/docs}}</ol>'
             ],
             modalTemplate: [
-                    '<div class="sub-cat-container">{{#docs}}',
-                    '<ol>',
+                    '<div class="sub-cat-container">',
+                    '<ol> {{#docs}}',
                     '<li class="sub-cat-title"><span>{{subcategory}}<span class="badge"> {{count}}</span></span>',
                     '<ol class="contracts-list">{{#data}}',
                     '<li><a href="{{link}}" target="_blank">{{name}}</a></li>',
@@ -281,7 +281,7 @@
                     $(this).next().slideToggle("fast");
                     $(".contracts-list").not($(this).next()).slideUp('fast');
                     $(this).toggleClass("minus");
-                
+                    $(".sub-cat-title").find(".minus").not($(this)).removeClass("minus");
                 }); 
             });
             

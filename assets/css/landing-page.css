@@ -2025,7 +2025,7 @@ form.signup-form .form-control:focus{
   padding-left: 69px;
   min-height: 63px;
   /* border-bottom: 1px solid #888888; */
-  box-shadow: 0px 6px 8px -8px rgba(0,0,0,0.5);
+  box-shadow: 0 3px 3px -3px rgba(0,0,0,0.4)
 }
 
 .doclist a {
@@ -2039,10 +2039,8 @@ form.signup-form .form-control:focus{
 }
 
 .doclist li:hover {
-  box-shadow: inset -3em 0 #63595C;
-  -webkit-transition: box-shadow 0.3s;
-  /* For Safari 3.1 to 6.0 */
-  transition: box-shadow 0.5s;
+  background: #eee;
+  
 }
 
 /*.doc-list-item:before {*/
@@ -2328,6 +2326,10 @@ h4.lawyer-extra-text {
   }
 }
 
+.sub-cat-container ol {
+  padding-left: 10px;
+}
+
 ol.contracts-list > li{
     padding: 10px;
     box-shadow: 0 3px 3px -3px grey;
@@ -2348,26 +2350,65 @@ ol.contracts-list > li:hover{
   /* background-color: #31708f; */
   cursor: pointer;
   color: #a94442;
-  border-bottom: 1px solid;
+  
+  -moz-box-shadow: 0 3px 3px -3px #a94442;
+	-webkit-box-shadow: 0 3px 3px -3px #a94442;
+	box-shadow: 0 3px 3px -3px #a94442;
+
   font-size: 17px;
 }
 
-.sub-cat-title > span:after{
-  content: "+";
-  position: absolute;
-  right: 10px;
-  top: 0;
-  font-size: 25px;
+.sub-cat-title > span:before{
+  content: "\f0da";
+  font-family: FontAwesome;
+  /*position: absolute;*/
+  /*right: 10px;*/
+  /*top: 0;*/
+  /*font-size: 25px;*/
+  padding-right: 10px;
 }
 
-.sub-cat-title > span.minus:after{
-  content: "-";
+.sub-cat-title > span.minus:before{
+  content: "\f0d7";
 }
 
 .sub-cat-title > span span.badge{
   margin-left: 10px;
-  font-size: 17px;
-  padding: 3px 13px;
+  font-size: 12px;
+  /*padding: 3px 13px;*/
+}
+
+.sub-cat-title > span:hover{
+  background: #f2dede;
+}
+
+.popular-title{
+  text-align: center;
+  font-weight: 900;
+}
+
+.popular-item-container{
+  text-align: center;
+    padding: 15px;
+    box-shadow: 0px 1px 5px 1px rgba(0,0,0,0.5);
+    background: rgba(0, 0, 0, .5);
+    font-size: 17px;
+    font-weight: 900;
+}
+
+.popular-item-container li:hover{
+  background: rgba(0, 0, 0, .5);
+}
+
+.popular-item-container .list-group-item{
+  /*min-width: 300px;*/
+  display: inline-block;
+  margin: 10px;
+  max-width: 100%;
+  background: transparent;
+}
+.popular-item-container a{
+  color: #fff;
 }
 /************ colors *******************/
 .stage-card .bg-sky-blue{

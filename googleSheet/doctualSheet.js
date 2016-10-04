@@ -110,7 +110,7 @@ module.exports = {
 		  sheets.spreadsheets.values.get({
 		    auth: auth,
 		    spreadsheetId: '1Qeu-oI5RZjoJ7dzYD8eVUOllAim7A-waZFs9NpQuHZw',
-		    range: 'Contract Data!A2:E',
+		    range: 'Contract Data!A2:F',
 		  }, function(err, response) {
 			    if (err) {
 			      console.log('The API returned an error: ' + err);
