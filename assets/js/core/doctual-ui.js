@@ -1,7 +1,51 @@
 /* global navigator, lunr */
 (function($) {
     var doctual = window.doctual = window.doctual || {};
-
+    
+    doctual.form = function ($form) {
+        var _addedElements = [];
+        function _handleResponse(data) {
+            if (data.success) {
+                var html = "<div class='alert alert-success signup-response'>{{message}}</div>".replace("{{message}}", data.message);
+                $(".modal-body").append(html);
+            } else {
+                var html_error = "<div class='alert alert-error signup-response'>{{message}}</div>".replace("{{message}}", data.message || "Error!!");
+                $(".modal-body").append(html_error);
+            }
+            $(".signup-form").hide();
+        }
+        
+        function reset() {
+            $(".signup-response").remove();
+        }
+        return {
+            submit: function () {
+                $form.submit(function (event) {
+                    var formData = {
+                        'name'  : $('input[name=name]').val(),
+                        'email' : $('input[name=email]').val(),
+                        'info'  : $('textarea[name=info]').val()
+                    };
+                    
+                    $.ajax({
+                        type: "POST",
+                        url: "formhandle.php",
+                        data: formData,
+                        dataType: 'json',
+                        encode: true
+                    })
+                    .done(function (data) {
+                        _handleResponse(data);
+                    });
+                    
+                    event.preventDefault();
+                    
+                  });    
+            }
+        };
+          
+    };
+    
     doctual.Model = function() {
         this.data = {
             _modalTemplate: [
@@ -87,7 +131,9 @@
         function _bindEvent() {
             function _handler(e) {
                 e.preventDefault();
-
+                if ($(this).next().is(":disabled")) {
+                    return false;
+                }
                 if (e.type === "keyup") {
                     if (e.keyCode !== 13) {
                         return false;
@@ -114,14 +160,43 @@
                 $(".signup-form fieldset:first").css({
                     "display": "block"
                 });
+                
+                $(".first-input").next().prop("disabled", true);
+                $(".signup-form").get(0).reset();
+                
                 //  $(".first-input").off("keyup");
                 //  $(".next-btn").off("click");
             });
         }
-
+        
+        function isEmail(email) {
+          var regex = /^([a-zA-Z0-9_.+-])+\@(([a-zA-Z0-9-])+\.)+([a-zA-Z0-9]{2,8})+$/;
+          return regex.test(email);
+        }
+        
+        function validate () {
+            $(".first-input, .form-moreInfo").on("keyup keydown", function () {
+               if ($(this).val().length > 0) {
+                   if ($(this).hasClass("form-email")) {
+                        var val = $(this).val();
+                        if (isEmail(val)) {
+                            $(this).next().prop("disabled", false);
+                        } else {
+                            $(this).next().prop("disabled", true);
+                        }
+                   } else {
+                       $(this).next().prop("disabled", false);
+                   }
+                   
+               } else {
+                   $(this).next().prop("disabled", true);
+               }
+            });
+        }
         return {
             init: function() {
                 _bindEvent();
+                validate();
             }
         };
     };
@@ -133,7 +208,7 @@
             search(allData);
             modalHandler.render(model);
         });
-
+        doctual.form($(".signup-form")).submit();
     });
 
     $(window).on('scroll', function() {

@@ -658,7 +658,7 @@
                     <div class="modal-header">
                         <button type="button" class="close big-close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
                         <h4 class="modal-title center-title">
-                            <strong>For</strong> User/Lawyer
+                            <strong>For <span class="for-label"></span></strong>
                         </h4>
                     </div>
                     <div class="modal-body">
@@ -672,8 +672,8 @@
                                 <div class="form-group">
                                     <!--<label class="col-sm-3 control-label signup-form-label" for="form-name">Name</label>-->
                                     <div class="col-sm-8 col-sm-offset-2">
-                                        <input type="text" name="form-name" placeholder="Full Name ..." class="first-input form-name form-control" id="form-first-name">
-                                        <button class="btn btn-lg btn-primary next-btn">Next</button>
+                                        <input type="text" name="name" placeholder="Full Name ..." class="first-input form-name form-control" id="form-first-name" required>
+                                        <button class="btn btn-lg btn-primary next-btn" disabled>Next</button>
                                     </div>
 
                                 </div>
@@ -683,8 +683,8 @@
                                 <div class="form-group">
                                     <!--<label class="col-sm-3 control-label signup-form-label" for="form-email">Email</label>-->
                                     <div class="col-sm-8 col-sm-offset-2">
-                                        <input type="text" name="form-email" placeholder="Email..." class="first-input form-email form-control" id="form-email">
-                                        <button class="btn btn-lg btn-primary next-btn">Next</button>
+                                        <input type="text" name="email" placeholder="Email..." class="first-input form-email form-control" id="form-email" required>
+                                        <button class="btn btn-lg btn-primary next-btn" disabled>Next</button>
                                     </div>
 
                                 </div>
@@ -693,8 +693,12 @@
                             <fieldset>
                                 <div class="form-group">
                                     <!--<label class="signup-form-label" for="formInfo">what are you requesting for?</label>-->
-                                    <textarea name="formInfo" placeholder="More Information" class="form-moreInfo form-control" rows="5" id="form-moreInfo"></textarea>
-                                    <button type="submit" class="btn btn-lg btn-success center-btn user-submit-btn">Submit</button>
+                                    <div class="col-sm-12">
+                                        <textarea name="info" placeholder="More Information" class="form-moreInfo form-control" rows="5" id="form-moreInfo" required></textarea>    
+                                        <button type="submit" class="btn btn-lg btn-success center-btn user-submit-btn" disabled>Submit</button>
+                                    </div>
+                                    
+                                    
                                 </div>
                             </fieldset>
 

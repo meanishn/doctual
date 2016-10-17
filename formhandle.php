@@ -1,14 +1,41 @@
 <?php
-    $to = "info@doctual.com"; 
-    $from = $_REQUEST['email']; 
-    $name = $_REQUEST['name']; 
-    $headers = "From: $from"; 
-    $subject = "You have a message sent from your site"; 
-    $fields = array(); 
-    $fields{"name"} = "name"; 
-    $fields{"email"} = "email"; 
-    $fields{"message"} = "message";
-    $body = "Here is what was sent:\n\n"; foreach($fields as $a => $b){   $body .= sprintf("%20s: %s\n",$b,$_REQUEST[$a]); }
-    $send = mail($to, $subject, $body, $headers);
-?>
-Raw
+
+
+    $errors         = array();      // array to hold validation errors
+    $data           = array();      // array to pass back data
+
+    // validate the variables ======================================================
+    // if any of these variables don't exist, add an error to our $errors array
+
+    if (empty($_POST['name']))
+        $errors['name'] = 'Name is required.';
+
+    if (empty($_POST['email']))
+        $errors['email'] = 'Email is required.';
+
+    if (empty($_POST['info']))
+        $errors['info'] = 'Request Message missing';
+
+    // return a response ===========================================================
+
+    // if there are any errors in our errors array, return a success boolean of false
+    if ( ! empty($errors)) {
+
+        // if there are items in our errors array, return those errors
+        $data['success'] = false;
+        $data['errors']  = $errors;
+    } else {
+
+        // if there are no errors process our form, then return a message
+
+        // DO ALL YOUR FORM PROCESSING HERE
+        // THIS CAN BE WHATEVER YOU WANT TO DO (LOGIN, SAVE, UPDATE, WHATEVER)
+
+        // show a message of success and provide a true success variable
+        $data['success'] = true;
+        $data['message'] = 'Success!';
+    }
+
+    // return all our data to an AJAX call
+    echo json_encode($data);
+

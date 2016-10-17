@@ -1875,6 +1875,10 @@ button.custombtn {
   color: #fff;
 }
 
+form.signup-form textarea.form-control {
+  border: 1px solid grey;
+}
+
 .label-usertype {
   color: #fff;
 }
@@ -1953,9 +1957,9 @@ button.custombtn {
 
 form.signup-form .form-control{
   
-  box-shadow: none;
-  border: 0;
-  border-bottom: 1px solid grey;
+  /*box-shadow: none;*/
+  /*border: 0;*/
+  /*border-bottom: 1px solid grey;*/
   border-radius: 4px!important;
 }
 
